@@ -1,0 +1,35 @@
+[
+  {
+    "id": "builtin-xss-001",
+    "name": "Inline script tag",
+    "description": "Detects attempts to inject <script> tags into inputs.",
+    "pattern": "/<script[^>]*>/i",
+    "targets": ["query", "body"],
+    "action": "block",
+    "severity": "high",
+    "enabled": true,
+    "tags": ["xss"]
+  },
+  {
+    "id": "builtin-xss-002",
+    "name": "Event handler injection",
+    "description": "Flags HTML event handler attributes that execute JavaScript.",
+    "pattern": "/on[a-z]{2,}\s*=\s*(\\\"|\\'|[^a-z0-9])/i",
+    "targets": ["query", "body"],
+    "action": "block",
+    "severity": "medium",
+    "enabled": true,
+    "tags": ["xss"]
+  },
+  {
+    "id": "builtin-xss-003",
+    "name": "JavaScript URI",
+    "description": "Detects javascript: protocol usage in attributes or inputs.",
+    "pattern": "/javascript\s*:/i",
+    "targets": ["query", "body"],
+    "action": "block",
+    "severity": "high",
+    "enabled": true,
+    "tags": ["xss", "protocol"]
+  }
+]

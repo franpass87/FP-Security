@@ -1,0 +1,35 @@
+[
+  {
+    "id": "builtin-cmd-001",
+    "name": "Shell command chaining",
+    "description": "Detects command chaining metacharacters like ; && used in exec payloads.",
+    "pattern": "/(;|&&|\\|\\|)\\s*(ls|cat|whoami|id|uname)/i",
+    "targets": ["query", "body"],
+    "action": "block",
+    "severity": "high",
+    "enabled": true,
+    "tags": ["command", "rce"]
+  },
+  {
+    "id": "builtin-cmd-002",
+    "name": "PHP command execution",
+    "description": "Detects use of system execution functions in user input.",
+    "pattern": "/\\b(system|exec|passthru|shell_exec|popen)\\s*\\(/i",
+    "targets": ["query", "body"],
+    "action": "block",
+    "severity": "critical",
+    "enabled": true,
+    "tags": ["command", "php"]
+  },
+  {
+    "id": "builtin-cmd-003",
+    "name": "Backtick command execution",
+    "description": "Detects attempts to execute shell commands using backticks.",
+    "pattern": "/`[^`]{1,128}`/",
+    "targets": ["query", "body"],
+    "action": "block",
+    "severity": "high",
+    "enabled": true,
+    "tags": ["command"]
+  }
+]

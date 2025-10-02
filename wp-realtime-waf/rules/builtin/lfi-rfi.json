@@ -1,0 +1,35 @@
+[
+  {
+    "id": "builtin-lfi-001",
+    "name": "Directory traversal",
+    "description": "Blocks use of ../ sequences indicative of local file inclusion.",
+    "pattern": "/\\.\\.\\//",
+    "targets": ["query", "path"],
+    "action": "block",
+    "severity": "high",
+    "enabled": true,
+    "tags": ["lfi"]
+  },
+  {
+    "id": "builtin-lfi-002",
+    "name": "Sensitive file access",
+    "description": "Detects attempts to read sensitive system files like /etc/passwd.",
+    "pattern": "/(\\/etc\\/passwd|\\/proc\\/self\\/environ|\\/wp-config\\.php)/i",
+    "targets": ["query", "path"],
+    "action": "block",
+    "severity": "critical",
+    "enabled": true,
+    "tags": ["lfi", "sensitive"]
+  },
+  {
+    "id": "builtin-rfi-001",
+    "name": "Remote file include",
+    "description": "Detects remote file inclusion using http or ftp schemes.",
+    "pattern": "/(https?:\\/\\/|ftp:).+\\.(php|txt|log)/i",
+    "targets": ["query", "body"],
+    "action": "block",
+    "severity": "high",
+    "enabled": true,
+    "tags": ["rfi"]
+  }
+]

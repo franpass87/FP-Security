@@ -1,0 +1,33 @@
+{
+  "name": "fp-security/wp-realtime-waf",
+  "description": "Real-time WAF + IDS/IPS plugin for WordPress.",
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=8.0",
+    "psr/log": "^3.0",
+    "monolog/monolog": "^3.6",
+    "predis/predis": "^2.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6",
+    "phpstan/phpstan": "^1.11",
+    "psalm/phar": "^5.23"
+  },
+  "autoload": {
+    "psr-4": {
+      "WPRTWAF\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WPRTWAF\\Tests\\": "tests/"
+    }
+  },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=512M",
+        "psalm": "php vendor/bin/psalm.phar --config=psalm.xml",
+        "coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text",
+        "package": "php bin/build-package.php"
+    }
+}

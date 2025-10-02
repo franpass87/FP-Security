@@ -1,0 +1,29 @@
+{
+    "payload": {
+        "version": "2024.06",
+        "issued_at": "2024-06-01T00:00:00Z",
+        "expires_at": "2025-06-01T00:00:00Z",
+        "rules": [
+            {
+                "id": "feed-rfi-001",
+                "description": "Remote file inclusion using data scheme",
+                "pattern": "/data:\\/\\/text\\/html/i",
+                "type": "regex",
+                "targets": [
+                    "query",
+                    "body"
+                ],
+                "severity": "high",
+                "action": "block",
+                "enabled": true,
+                "tags": [
+                    "rfi",
+                    "feed"
+                ]
+            }
+        ]
+    },
+    "signature": "c5c459585b9be8595e021bf1a7c542f0849f13195c2651a323d5e07d26702413",
+    "algorithm": "sha256",
+    "note": "Local development feed"
+}
