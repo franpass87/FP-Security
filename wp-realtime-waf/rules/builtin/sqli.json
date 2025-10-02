@@ -1,0 +1,35 @@
+[
+  {
+    "id": "builtin-sqli-001",
+    "name": "Union-based SQLi",
+    "description": "Detects UNION SELECT statements commonly used in SQL injection probes.",
+    "pattern": "/union\\s+select/i",
+    "targets": ["query", "body", "path"],
+    "action": "block",
+    "severity": "high",
+    "enabled": true,
+    "tags": ["sqli", "injection"]
+  },
+  {
+    "id": "builtin-sqli-002",
+    "name": "Boolean tautology SQLi",
+    "description": "Blocks boolean-based SQL injection payloads such as ' OR 1=1 --.",
+    "pattern": "/(['\"]|\\b)(or|and)\\s+[0-9a-z_]*\\s*=\\s*([0-9]+|['\"][^'\"]+['\"])\\s*(--|#|\\/\\*)?/i",
+    "targets": ["query", "body"],
+    "action": "block",
+    "severity": "high",
+    "enabled": true,
+    "tags": ["sqli"]
+  },
+  {
+    "id": "builtin-sqli-003",
+    "name": "Time-based SQLi",
+    "description": "Detects SQL injection attempts using timing functions like SLEEP or BENCHMARK.",
+    "pattern": "/\\b(sleep|benchmark)\\s*\\(\\s*[0-9]{1,3}\\s*\\)/i",
+    "targets": ["query", "body"],
+    "action": "block",
+    "severity": "high",
+    "enabled": true,
+    "tags": ["sqli"]
+  }
+]

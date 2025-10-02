@@ -1,0 +1,14 @@
+{
+  "name": "wp-realtime-waf",
+  "version": "1.0.0",
+  "requires": {
+    "wordpress": ">=6.0",
+    "php": ">=8.0"
+  },
+  "dependencies": {
+    "composer": [
+      "predis/predis",
+      "monolog/monolog"
+    ]
+  }
+}
