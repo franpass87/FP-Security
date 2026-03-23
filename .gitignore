@@ -1,0 +1,9 @@
+# vendor INCLUSO nel repo (fp-git-updater richiede deploy senza composer)
+# vendor/
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+*.zip
+.env
+.env.*
