@@ -3,7 +3,7 @@
  * Plugin Name:       FP Security
  * Plugin URI:        https://github.com/franpass87/FP-Security
  * Description:       Firewall, hardening, protezione login e scanner. Alternativa leggera e modulare a Wordfence.
- * Version:           1.4.0
+ * Version:           1.4.1
  * Requires at least: 6.0
  * Requires PHP:      8.1
  * Author:            Francesco Passeri
@@ -20,7 +20,7 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-define('FP_SECURITY_VERSION', '1.4.0');
+define('FP_SECURITY_VERSION', '1.4.1');
 define('FP_SECURITY_FILE', __FILE__);
 define('FP_SECURITY_DIR', plugin_dir_path(__FILE__));
 define('FP_SECURITY_URL', plugin_dir_url(__FILE__));

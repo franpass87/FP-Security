@@ -14,6 +14,7 @@ delete_option('fp_security_settings');
 delete_option('fp_security_db_version');
 delete_option('fp_security_blocklist');
 delete_option('fp_security_lockout_counts');
+delete_option('fp_security_log');
 
 // Transient lockout
 global $wpdb;

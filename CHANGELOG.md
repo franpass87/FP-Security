@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1] - 2025-03-23
+
+### Fixed
+- Firewall: rimosso `/xmlrpc.php` da BLOCKED_PATHS — ora gestito solo da Hardening (toggle) per non rompere Jetpack/WPML/Translation Proxy
+- Firewall: spostato check da `init` a `parse_request` e aggiunto skip per URI REST (`wp-json`, `rest_route=`) per evitare blocchi a REST API quando `REST_REQUEST` non è ancora definito
+- Uninstall: aggiunto `delete_option('fp_security_log')` per pulizia completa
+
 ## [1.4.0] - 2025-03-23
 
 ### Added

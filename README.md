@@ -1,6 +1,6 @@
 # FP Security
 
-![Version](https://img.shields.io/badge/version-1.4.0-blue)
+![Version](https://img.shields.io/badge/version-1.4.1-blue)
 ![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?logo=php)
 ![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759B?logo=wordpress)
 
@@ -55,6 +55,11 @@ FP-Security/
 | `fp_security_login_whitelist` | filter | `apply_filters('fp_security_login_whitelist', $ips_string)` — aggiungi IP alla whitelist (uno per riga) |
 | `fp_security_log_max_age_days` | filter | `apply_filters('fp_security_log_max_age_days', 90)` — retention log in giorni (0 = nessun limite età) |
 | `fp_security_settings_saved` | action | `do_action('fp_security_settings_saved', $settings)` — dopo salvataggio impostazioni |
+
+## Compatibilità
+
+- **Jetpack / WPML / Translation Proxy**: se usi XML-RPC, disattiva "Disabilita XML-RPC" in Impostazioni → Hardening. Il firewall non blocca più `/xmlrpc.php`.
+- **REST API**: il firewall esclude automaticamente le richieste a `wp-json` e `rest_route`.
 
 ## Autore
 

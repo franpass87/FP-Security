@@ -17,12 +17,11 @@ final class RequestFilter {
         private readonly IpBlocklist $blocklist
     ) {}
 
-    /** @var list<string> */
+    /** @var list<string> Path bloccati. xmlrpc.php gestito da HardeningManager (toggle) per non rompere Jetpack/WPML. */
     private const BLOCKED_PATHS = [
         '/wp-config.php.bak',
         '/.env',
         '/.git/config',
-        '/xmlrpc.php',
         '/readme.html',
         '/license.txt',
         '/wp-includes/version.php',
@@ -44,7 +43,7 @@ final class RequestFilter {
     ];
 
     public function register_hooks(): void {
-        add_action('init', [$this, 'check_request'], 1);
+        add_action('parse_request', [$this, 'check_request'], 1);
     }
 
     public function check_request(): void {
@@ -110,6 +109,10 @@ final class RequestFilter {
             return true;
         }
         if (defined('REST_REQUEST') && REST_REQUEST) {
+            return true;
+        }
+        $uri = isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '';
+        if (str_contains($uri, 'wp-json') || str_contains($uri, 'rest_route=')) {
             return true;
         }
         return false;
