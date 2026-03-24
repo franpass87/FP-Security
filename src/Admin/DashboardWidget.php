@@ -18,6 +18,8 @@ final class DashboardWidget {
         'fp_security_settings_saved' => 'Impostazioni salvate',
         'plugin_activated' => 'Plugin attivato',
         'plugin_deactivated' => 'Plugin disattivato',
+        'dangerous_upload_blocked' => 'Upload pericoloso bloccato',
+        'uploads_php_protection_applied' => 'Protezione uploads applicata',
     ];
 
     public function __construct(
@@ -80,6 +82,9 @@ final class DashboardWidget {
         }
         if (isset($ctx['plugin'])) {
             return (string) $ctx['plugin'];
+        }
+        if (isset($ctx['filename'])) {
+            return (string) $ctx['filename'];
         }
         if (isset($ctx['path'])) {
             return (string) $ctx['path'];

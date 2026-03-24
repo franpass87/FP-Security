@@ -143,6 +143,12 @@ final class AdminMenu {
         $settings['htaccess_protection'] = [
             'enabled' => !empty($_POST['htaccess_protection_enabled']),
         ];
+        $settings['uploads_php_protection'] = [
+            'enabled' => !empty($_POST['uploads_php_protection_enabled']),
+        ];
+        $settings['dangerous_upload_blocker'] = [
+            'enabled' => !empty($_POST['dangerous_upload_blocker_enabled']),
+        ];
 
         update_option(self::OPTION_KEY, $settings);
 
@@ -234,6 +240,9 @@ final class AdminMenu {
             <?php
             $sh = $this->securityHeaders->get_settings();
             $hp = $this->htaccessProtection->get_settings();
+            $sd = $this->get_settings();
+            $upp = ($sd['uploads_php_protection'] ?? [])['enabled'] ?? true;
+            $dub = ($sd['dangerous_upload_blocker'] ?? [])['enabled'] ?? true;
             ?>
             <div class="fpsecurity-status-bar">
                 <span class="fpsecurity-status-pill <?php echo !empty($h['hide_wp_version']) ? 'is-active' : ''; ?>">
@@ -244,6 +253,12 @@ final class AdminMenu {
                 </span>
                 <span class="fpsecurity-status-pill <?php echo !empty($hp['enabled']) ? 'is-active' : ''; ?>">
                     <span class="dot"></span> <?php esc_html_e('.htaccess', 'fp-security'); ?>
+                </span>
+                <span class="fpsecurity-status-pill <?php echo $upp ? 'is-active' : ''; ?>">
+                    <span class="dot"></span> <?php esc_html_e('PHP in Uploads', 'fp-security'); ?>
+                </span>
+                <span class="fpsecurity-status-pill <?php echo $dub ? 'is-active' : ''; ?>">
+                    <span class="dot"></span> <?php esc_html_e('Upload Blocker', 'fp-security'); ?>
                 </span>
                 <span class="fpsecurity-status-pill <?php echo !empty($l['login_protection_enabled']) ? 'is-active' : ''; ?>">
                     <span class="dot"></span> <?php esc_html_e('Protezione Login', 'fp-security'); ?>
@@ -446,6 +461,41 @@ final class AdminMenu {
                             </div>
                             <label class="fpsecurity-toggle">
                                 <input type="checkbox" name="htaccess_protection_enabled" value="1" <?php checked(!empty($hp['enabled'])); ?>>
+                                <span class="fpsecurity-toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+                $upp = $s['uploads_php_protection'] ?? [];
+                $upp = is_array($upp) ? $upp : ['enabled' => true];
+                $dub = $s['dangerous_upload_blocker'] ?? [];
+                $dub = is_array($dub) ? $dub : ['enabled' => true];
+                ?>
+                <div class="fpsecurity-card">
+                    <div class="fpsecurity-card-header">
+                        <span class="dashicons dashicons-upload"></span>
+                        <h2><?php esc_html_e('Protezione Upload', 'fp-security'); ?></h2>
+                    </div>
+                    <div class="fpsecurity-card-body">
+                        <div class="fpsecurity-toggle-row">
+                            <div class="fpsecurity-toggle-info">
+                                <strong><?php esc_html_e('Disabilita PHP in cartella Uploads', 'fp-security'); ?></strong>
+                                <span><?php esc_html_e('Scrive .htaccess in wp-content/uploads per impedire esecuzione di .php, .phtml, .phar, ecc. (Apache).', 'fp-security'); ?></span>
+                            </div>
+                            <label class="fpsecurity-toggle">
+                                <input type="checkbox" name="uploads_php_protection_enabled" value="1" <?php checked(!empty($upp['enabled'])); ?>>
+                                <span class="fpsecurity-toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="fpsecurity-toggle-row">
+                            <div class="fpsecurity-toggle-info">
+                                <strong><?php esc_html_e('Blocca upload estensioni pericolose', 'fp-security'); ?></strong>
+                                <span><?php esc_html_e('Rifiuta upload di .php, .phar, .exe, .sh e simili, anche in doppia estensione (es. malware.php.jpg).', 'fp-security'); ?></span>
+                            </div>
+                            <label class="fpsecurity-toggle">
+                                <input type="checkbox" name="dangerous_upload_blocker_enabled" value="1" <?php checked(!empty($dub['enabled'])); ?>>
                                 <span class="fpsecurity-toggle-slider"></span>
                             </label>
                         </div>

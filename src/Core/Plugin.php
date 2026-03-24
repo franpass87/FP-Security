@@ -13,6 +13,8 @@ use FP\Security\Hardening\HardeningManager;
 use FP\Security\Headers\SecurityHeaders;
 use FP\Security\Htaccess\HtaccessFileProtection;
 use FP\Security\LoginProtection\LoginGuard;
+use FP\Security\Uploads\DangerousUploadBlocker;
+use FP\Security\Uploads\UploadsPhpProtection;
 use FP\Security\Log\SecurityLogger;
 use FP\Security\Notifications\LockoutNotifier;
 
@@ -42,6 +44,8 @@ final class Plugin {
             fn() => (new HardeningManager($logger))->register_hooks(),
             fn() => (new SecurityHeaders($logger))->register_hooks(),
             fn() => (new HtaccessFileProtection($logger))->register_hooks(),
+            fn() => (new UploadsPhpProtection($logger))->register_hooks(),
+            fn() => (new DangerousUploadBlocker($logger))->register_hooks(),
             fn() => (new LoginGuard($logger, $blocklist))->register_hooks(),
             fn() => (new RequestFilter($logger, $blocklist))->register_hooks(),
             fn() => (new LockoutNotifier())->register_hooks(),

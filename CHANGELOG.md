@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0] - 2025-03-23
+
+### Added
+- Protezione PHP in uploads: .htaccess in wp-content/uploads blocca esecuzione di .php, .phtml, .phar, ecc. (Apache)
+- Blocco upload pericolosi: rifiuta file con estensioni rischiose (php, phar, exe, sh, ecc.) anche in doppia estensione
+- Sezione "Protezione Upload" in Impostazioni con due toggle indipendenti
+
 ## [1.3.0] - 2025-03-23
 
 ### Added

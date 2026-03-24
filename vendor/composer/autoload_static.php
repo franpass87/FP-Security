@@ -34,6 +34,8 @@ class ComposerStaticInite4fad7f7096318e7cc516381ad093f4d
         'FP\\Security\\Log\\SecurityLogger' => __DIR__ . '/../..' . '/src/Log/SecurityLogger.php',
         'FP\\Security\\LoginProtection\\LoginGuard' => __DIR__ . '/../..' . '/src/LoginProtection/LoginGuard.php',
         'FP\\Security\\Notifications\\LockoutNotifier' => __DIR__ . '/../..' . '/src/Notifications/LockoutNotifier.php',
+        'FP\\Security\\Uploads\\DangerousUploadBlocker' => __DIR__ . '/../..' . '/src/Uploads/DangerousUploadBlocker.php',
+        'FP\\Security\\Uploads\\UploadsPhpProtection' => __DIR__ . '/../..' . '/src/Uploads/UploadsPhpProtection.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

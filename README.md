@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-# FP-Security
-=======
 # FP Security
 
-![Version](https://img.shields.io/badge/version-1.3.0-blue)
+![Version](https://img.shields.io/badge/version-1.4.0-blue)
 ![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?logo=php)
 ![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-21759B?logo=wordpress)
 
@@ -14,6 +11,7 @@ Plugin WordPress per la sicurezza: firewall, hardening, protezione login. Altern
 - **Hardening WordPress**: nasconde versione WP, disabilita modifica file, XML-RPC, REST /users, rimuove WLW/RSD
 - **Protezione Login**: limite tentativi, lockout temporaneo, whitelist IP, blocklist automatica
 - **Firewall**: blocca path sospetti, query malevole, IP in blocklist
+- **Protezione Upload**: disabilita PHP in uploads (.htaccess), blocca upload estensioni pericolose
 - **Blocklist IP**: IP bloccati permanentemente, aggiunta manuale (uno per riga), gestione
 - **Notifiche**: email su lockout
 - **Log**: eventi, export CSV, sblocco IP, audit admin (login, impostazioni, plugin)
@@ -40,6 +38,8 @@ FP-Security/
 │   ├── Hardening/HardeningManager.php
 │   ├── LoginProtection/LoginGuard.php
 │   ├── Firewall/RequestFilter.php
+│   ├── Uploads/UploadsPhpProtection.php
+│   ├── Uploads/DangerousUploadBlocker.php
 │   ├── Log/SecurityLogger.php
 │   ├── Audit/AuditLog.php
 │   ├── Admin/AdminMenu.php
@@ -62,4 +62,3 @@ FP-Security/
 - Sito: [francescopasseri.com](https://francescopasseri.com)
 - Email: [info@francescopasseri.com](mailto:info@francescopasseri.com)
 - GitHub: [github.com/franpass87](https://github.com/franpass87)
->>>>>>> d725801 (feat: blocklist manuale, audit log, widget dashboard (v 1.3.0))
