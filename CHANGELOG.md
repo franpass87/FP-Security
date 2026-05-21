@@ -1,3 +1,9 @@
+## [1.5.0] - 2026-05-20
+
+### Added
+
+- **SettingsRegistry** + API globali per integrazione FP Remote Bridge: 28 chiavi virtuali su `fp_security_settings` (hardening, login, firewall, notifications, security_headers, htaccess, uploads) con `fp_security_apply_settings()` dry-run e action `fp_security_settings_applied_remote`.
+- **RuntimeDiagnostics** + `fp_security_get_runtime_diagnostics()`: 8 sezioni (login_events_recent, blocklist_status, login_protection, modules_status, logs_tail, firewall_blocks_recent, lockout_escalation, problems) con IP/username mascherati.
 # Changelog
 
 ## [1.4.1] - 2025-03-23

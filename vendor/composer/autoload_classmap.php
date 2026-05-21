@@ -19,6 +19,8 @@ return array(
     'FP\\Security\\Log\\SecurityLogger' => $baseDir . '/src/Log/SecurityLogger.php',
     'FP\\Security\\LoginProtection\\LoginGuard' => $baseDir . '/src/LoginProtection/LoginGuard.php',
     'FP\\Security\\Notifications\\LockoutNotifier' => $baseDir . '/src/Notifications/LockoutNotifier.php',
+    'FP\\Security\\Services\\Diagnostics\\RuntimeDiagnostics' => $baseDir . '/src/Services/Diagnostics/RuntimeDiagnostics.php',
+    'FP\\Security\\Services\\Settings\\SettingsRegistry' => $baseDir . '/src/Services/Settings/SettingsRegistry.php',
     'FP\\Security\\Uploads\\DangerousUploadBlocker' => $baseDir . '/src/Uploads/DangerousUploadBlocker.php',
     'FP\\Security\\Uploads\\UploadsPhpProtection' => $baseDir . '/src/Uploads/UploadsPhpProtection.php',
 );
